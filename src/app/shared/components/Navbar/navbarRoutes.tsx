@@ -7,10 +7,10 @@ export const useNavbarRoutes =() =>{
         path:ERoutes.HOME
         },
         {text:"Movie List",
-        path:ERoutes.MOVIELIST
+        path:ERoutes.MOVIE_LIST
         },
         {text:"Coming Soon",
-        path:ERoutes.COMINGSOON
+        path:ERoutes.COMING_SOON
         },
     ]
 }

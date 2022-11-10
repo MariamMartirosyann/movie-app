@@ -12,8 +12,8 @@ const Navbar = () => {
           Logo
         </Grid>
        {navbarRoutes.map((route)=>
-          <Grid item xs={1}>
-       <Link  style={{textDecoration:'none'}} to={route.path} key={route.path}>{route.text}</Link>
+          <Grid item xs={1} key={route.path}>
+       <Link  style={{textDecoration:'none'}} to={route.path} >{route.text}</Link>
        </Grid>
        )}
       </Grid>

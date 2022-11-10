@@ -1,4 +1,7 @@
-export interface IMovie{
-    name:'string',
-    duration:number
+export interface IMovie {
+  id: any;
+  imdbID: number;
+  Title: "string";
+  Year: number;
+  Poster: "string";
 }
