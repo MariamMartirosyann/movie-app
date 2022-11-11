@@ -7,7 +7,7 @@ const Navbar = () => {
   const navbarRoutes= useNavbarRoutes()
   return (
     <>
-      <Grid container m={4}>
+      <Grid container m={2} style={{width:"100%"}}>
         <Grid item xs={1}>
           Logo
         </Grid>

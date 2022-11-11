@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { IMovie } from "../../inrefaces/movieInterface";
+import { IMovie } from "../../interfaces/movieInterface";
 import "./style.css";
 
 const MovieList = () => {
@@ -25,7 +25,8 @@ const MovieList = () => {
       <Grid container mx={10}>
         {popularMovies?.map((movie) => {
           return (
-            <Grid item lg={4} key={movie.imdbID} my={5}>
+            <Grid item xs={3} key={movie.imdbID} my={5} className="mCard">
+              <div className="layer"></div>
               <Link
                 to={`/movie-details/${movie.imdbID}`}
                 className="decorationNon"

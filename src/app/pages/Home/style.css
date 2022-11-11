@@ -1,3 +1,13 @@
+.mainPlayer{
+   width: 100%;
+}
+.videoGrid{
+    width: 100%; 
+}
+.video{
+    width:100%;
+    overflow: hidden;
+}
 .mPoster {
     width: 266px;
     height: 250px;

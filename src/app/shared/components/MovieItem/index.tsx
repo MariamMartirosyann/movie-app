@@ -1,7 +1,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { IMovie } from "../../../inrefaces/movieInterface";
+import { IMovie } from "../../../interfaces/movieInterface";
 import "./style.css";
 
 const Movie = () => {

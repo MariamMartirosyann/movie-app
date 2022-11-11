@@ -1,11 +1,8 @@
 .movieImage{
-    width: 350px;
-    height: 400px;
+    width: 250px;
+    height: 300px;
 }
-/* .movieImage:hover{
-    width: 450px;
-    height: 450px;
-} */
+
 .decorationNon{
     text-decoration: none;
 }
