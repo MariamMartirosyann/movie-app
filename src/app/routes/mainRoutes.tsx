@@ -12,7 +12,7 @@ const mainRoutes = [
     children: [
       { path: ERoutes.HOME, element: <Home /> },
       { path: ERoutes.MOVIE_LIST, element: <MovieList /> },
-      { path: ERoutes.MOVIE_DETAILS, Element: <Movie /> },
+      { path: ERoutes.MOVIE_DETAILS, element: <Movie /> },
       { path: ERoutes.COMING_SOON, element: <ComingSoon /> },
     ],
   },

@@ -1,8 +1,7 @@
-
 import Slider from "react-slick";
 import { useEffect, useState } from "react";
 import { IMovie } from "../../inrefaces/movieInterface";
-import "./style.css"
+import "./style.css";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -13,6 +12,7 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => {
         setPopularMovies(data.Search);
+        localStorage.setItem("m", JSON.stringify(data.Search));
       });
   }, []);
 
@@ -34,13 +34,20 @@ const Home = () => {
     <Slider {...settings} className="mSlider">
       {popularMovies?.map((movie) => {
         return (
-          <Link key={movie.imdbID} to={`/movie-details/${movie.imdbID}`}> 
-          <div  className="mPoster">
-            <img className="mImage" src={!!movie.Poster&& movie.Poster} alt={movie.Title} />
-        <div>{movie.Title}</div>
-        <div>Year: {movie.Year}</div>     
+          <div className="mPoster" key={movie.imdbID}>
+            <Link
+              to={`/movie-details/${movie.imdbID}`}
+              className="decorationNon"
+            >
+              <img
+                className="mImage"
+                src={!!movie.Poster && movie.Poster}
+                alt={movie.Title}
+              />
+              <div>{movie.Title}</div>
+              <div>Year: {movie.Year}</div>
+            </Link>
           </div>
-          </Link>
         );
       })}
     </Slider>
