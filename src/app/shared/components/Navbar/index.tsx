@@ -1,22 +1,23 @@
-import { Grid } from "@mui/material";
+
 import { Link } from "react-router-dom";
 import { useNavbarRoutes } from "./navbarRoutes";
+import "./style.css"
 
 
 const Navbar = () => {
   const navbarRoutes= useNavbarRoutes()
   return (
     <>
-      <Grid container m={2} style={{width:"100%"}}>
-        <Grid item xs={1}>
+      <div className="mainNav">
+        <div  className="navItem">
           Logo
-        </Grid>
+        </div>
        {navbarRoutes.map((route)=>
-          <Grid item xs={1} key={route.path}>
-       <Link  style={{textDecoration:'none'}} to={route.path} >{route.text}</Link>
-       </Grid>
+         <div className="navItem" key={route.path}>
+       <Link  className="link" to={route.path} >{route.text}</Link>
+       </div>
        )}
-      </Grid>
+      </div>
     </>
   );
 };

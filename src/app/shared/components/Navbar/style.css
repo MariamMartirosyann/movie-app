@@ -1,0 +1,23 @@
+.mainNav{
+    width: 100%;
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    z-index: 2
+}
+.navItem{
+    width: 100px;
+    margin:30px;
+    background: transparent;
+}
+.link{
+    text-decoration: none;
+    background: transparent;
+}
+.navItem:hover {
+    color:red;
+}
+.link:hover {
+    color:red;
+}

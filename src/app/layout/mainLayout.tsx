@@ -1,13 +1,13 @@
-import { Box } from "@mui/material";
+
 import { Outlet } from "react-router-dom";
 import Navbar from "../shared/components/Navbar";
 
 const mainLayout = () => {
   return (
-    <Box>
+    <div style={{ position: "relative" }}>
       <Navbar />
       <Outlet />
-    </Box>
+    </div>
   );
 };
 

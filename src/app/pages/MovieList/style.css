@@ -1,8 +1,22 @@
-.movieImage{
-    width: 250px;
-    height: 300px;
+.mCard {
+  position: relative;
 }
 
-.decorationNon{
-    text-decoration: none;
+.movieImage {
+  width: 250px;
+  height: 300px;
+}
+.decorationNon {
+  text-decoration: none;
+}
+
+.layer {
+  width: 250px;
+  height: 300px;
+  z-index: -1;
+  position: absolute;
+}
+
+.mCard:hover .layer {
+  z-index: 1;
 }

@@ -10,7 +10,7 @@ const Movie = () => {
 
   const movies = localStorage.getItem("m");
 
-  const myMovie = useMemo(() => {
+  useMemo(() => {
     if (movies) {
       const movieList = JSON.parse(movies);
       const currMovie = movieList.find((i: any) => i.imdbID === imdbID);
@@ -21,7 +21,7 @@ const Movie = () => {
   console.log(movieData, "movieData");
   return (
     <Box p={4}>
-      <Grid container mx={10}>
+      <Grid container m={10}>
         <Typography variant="h4">Movie Details </Typography>
       </Grid>
       <Grid container m={10}>

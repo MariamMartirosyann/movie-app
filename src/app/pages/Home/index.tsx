@@ -1,21 +1,36 @@
 import Slider from "react-slick";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { IMovie } from "../../interfaces/movieInterface";
 import "./style.css";
 import { Link } from "react-router-dom";
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
+import axios from "axios";
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState<IMovie[]>();
 
-  useEffect(() => {
-    fetch("https://fake-movie-database-api.herokuapp.com/api?s=batman")
-      .then((res) => res.json())
-      .then((data) => {
-        setPopularMovies(data.Search);
-        localStorage.setItem("m", JSON.stringify(data.Search));
-      });
+  const memoizedCallback = useCallback(async () => {
+    try {
+      const res = await axios.get(
+        "https://moviesdatabase.p.rapidapi.com/titles",
+        {
+          headers: {
+            "x-rapidapi-host": "moviesdatabase.p.rapidapi.com",
+            "x-rapidapi-key":
+              "a0e225aa42msh9e2aea2bb3db437p15dad6jsn70a72b86afcf",
+          },
+          params: { category: "all", count: "1" },
+        }
+      );
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   }, []);
+
+  useEffect(() => {
+    memoizedCallback();
+  }, [memoizedCallback]);
 
   const settings = {
     dots: false,
@@ -33,9 +48,8 @@ const Home = () => {
 
   return (
     <>
-      <div className="mainPlayer">
-        
-        <div className="videoGrid">
+      <Grid container style={{ position: "relative" }}>
+        <Grid container>
           <video
             src="https://video.wixstatic.com/video/f2ac30_0a607a47865e44b9bddd4ce458330749/1080p/mp4/file.mp4"
             autoPlay
@@ -43,15 +57,23 @@ const Home = () => {
             muted
             className="video"
           />
-        </div>
+        </Grid>
         <div className="textGrid">
-          <Grid item lg={6}>
-            <Typography variant="h1">Knights of Wales</Typography>
-          </Grid>
+          {" "}
+          <div style={{ background: "transparent" }}>
+            <h2 style={{ background: "transparent" }}> Knights of Wales</h2>
+            <p style={{ background: "transparent" }}>
+              I'm a paragraph. Click here to add your own text and edit me. It’s
+              easy. Just click “Edit Text” or double click me to add your own
+              content and make changes to the font.
+            </p>
+            <button className="btn">
+              <h5 style={{ background: "transparent" }}>Watch now </h5>
+            </button>
+          </div>
         </div>
-      </div>
+      </Grid>
 
-      <Grid container></Grid>
       <Slider {...settings} className="mSlider">
         {popularMovies?.map((movie) => {
           return (
