@@ -1,38 +1,75 @@
-.mainPlayer{
-   width: 100%;
-   position:relative
+.mainPlayer {
+  width: 100%;
+  position: relative;
 }
-.videoGrid{
-    width:100%;
-   
+.videoGrid {
+  width: 100%;
 }
-.video{
-    width:100%;
-    overflow: hidden;
+.video {
+  width: 100%;
+  overflow: hidden;
 }
-.textGrid{
-    width: 35%;
-   position:absolute;
-    background:transparent;
-    margin:20% 10%; 
-    
-
+.textGrid {
+  width: 35%;
+  position: absolute;
+  background: transparent;
+  margin: 20% 10%;
 }
 .mPoster {
-    width: 266px;
-    height: 250px;
+  width: 400px;
+  height: 450px;
+  position: relative;
+  display: block;
+  flex: 1 1 0px;
+  transition: transform 500ms;
 }
-.mImage{
-    width: 100%;
-    height: 100%;
+.mSlider .slick-list{
+  height:500px;
+  padding:50px
 }
-.btn{
-    border: 1px solid white;
-    width:150px;
-    height: 50px;
-   background:transparent;
+.mSlider .mPoster:focus,
+.mSlider .mPoster:hover {
+  transform:  scale(1.2);
+  z-index: 1;
 }
 
-.btn:hover{
-    background: red;
+.mPoster:hover .mDetail{
+  opacity: 1;
 }
+
+
+.mImage {
+  width: 100%;
+  height: 70%;
+}
+.mDetail{
+  opacity: 0;
+}
+.btn {
+  border: 1px solid white;
+  width: 150px;
+  height: 50px;
+  background: transparent;
+}
+
+.btn:hover {
+  background: red;
+}
+.mSlider {
+  height: 500px;
+  margin:  50px 0;
+  
+}
+.cardIcons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.mTitle{
+  display: flex;
+  justify-content: center;
+}
+.iconDiv{
+  margin: 10px;
+}
+/* transform: scale(1.5);*/

@@ -1,8 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import common from './redux/common';
 
 
 export const store = configureStore({
-  reducer: {
+  reducer: {common
    
   },
 });

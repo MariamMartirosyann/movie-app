@@ -1,36 +1,32 @@
-import Slider from "react-slick";
-import { useCallback, useEffect, useState } from "react";
-import { IMovie } from "../../interfaces/movieInterface";
-import "./style.css";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import Slider from "react-slick";
+import { IMovie } from "../../interfaces/movieInterface";
 import { Grid } from "@mui/material";
-import axios from "axios";
+import { selectLoadingState, setLoading } from "../../redux/common";
+import SliderSkeleton from "../../shared/SlyerSkeleton";
+import { AppDispatch } from "../../store";
+import "./style.css";
+import { cardInfo } from "./constants";
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState<IMovie[]>();
-
-  const memoizedCallback = useCallback(async () => {
-    try {
-      const res = await axios.get(
-        "https://moviesdatabase.p.rapidapi.com/titles",
-        {
-          headers: {
-            "x-rapidapi-host": "moviesdatabase.p.rapidapi.com",
-            "x-rapidapi-key":
-              "a0e225aa42msh9e2aea2bb3db437p15dad6jsn70a72b86afcf",
-          },
-          params: { category: "all", count: "1" },
-        }
-      );
-      console.log(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
+  const dispatch = useDispatch<AppDispatch>();
+  const isLoading = useSelector(selectLoadingState);
 
   useEffect(() => {
-    memoizedCallback();
-  }, [memoizedCallback]);
+    fetch("https://fake-movie-database-api.herokuapp.com/api?s=batman")
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(setLoading(true));
+        setPopularMovies(data.Search);
+        localStorage.setItem("m", JSON.stringify(data.Search));
+        setTimeout(() => {
+          dispatch(setLoading(false));
+        }, 1000);
+      });
+  }, [dispatch]);
 
   const settings = {
     dots: false,
@@ -59,7 +55,6 @@ const Home = () => {
           />
         </Grid>
         <div className="textGrid">
-          {" "}
           <div style={{ background: "transparent" }}>
             <h2 style={{ background: "transparent" }}> Knights of Wales</h2>
             <p style={{ background: "transparent" }}>
@@ -73,27 +68,40 @@ const Home = () => {
           </div>
         </div>
       </Grid>
-
-      <Slider {...settings} className="mSlider">
-        {popularMovies?.map((movie) => {
-          return (
-            <div className="mPoster" key={movie.imdbID}>
-              <Link
-                to={`/movie-details/${movie.imdbID}`}
-                className="decorationNon"
-              >
-                <img
-                  className="mImage"
-                  src={!!movie.Poster && movie.Poster}
-                  alt={movie.Title}
-                />
-                <div>{movie.Title}</div>
-                <div>Year: {movie.Year}</div>
-              </Link>
-            </div>
-          );
-        })}
-      </Slider>
+      {isLoading ? (
+        <SliderSkeleton />
+      ) : (
+        <Slider {...settings} className="mSlider">
+          {popularMovies?.map((movie) => {
+            return (
+              <div className="mPoster" key={movie.imdbID}>
+                <Link
+                  to={`/movie-details/${movie.imdbID}`}
+                  className="decorationNon"
+                >
+                  <img
+                    className="mImage"
+                    src={!!movie.Poster && movie.Poster}
+                    alt={movie.Title}
+                  />
+                  <div className="mDetail">
+                    <div className="cardIcons">
+                      {cardInfo?.map((i) => {
+                        return (
+                          <div key={i.id} className="iconDiv">
+                            {i.icon}
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div className="mTitle">{movie.Title}</div>
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+        </Slider>
+      )}
     </>
   );
 };
