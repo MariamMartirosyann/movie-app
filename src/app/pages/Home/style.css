@@ -57,7 +57,7 @@
 }
 .mSlider {
   height: 500px;
-  margin:  50px 0;
+  margin:  10px 0;
   
 }
 .cardIcons{
@@ -72,4 +72,3 @@
 .iconDiv{
   margin: 10px;
 }
-/* transform: scale(1.5);*/

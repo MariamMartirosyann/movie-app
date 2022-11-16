@@ -18,7 +18,6 @@ const Movie = () => {
     }
   }, [imdbID, movies]);
 
-  console.log(movieData, "movieData");
   return (
     <Box p={4}>
       <Grid container m={10}>

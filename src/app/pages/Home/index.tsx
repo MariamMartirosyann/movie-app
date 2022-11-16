@@ -7,8 +7,8 @@ import { Grid } from "@mui/material";
 import { selectLoadingState, setLoading } from "../../redux/common";
 import SliderSkeleton from "../../shared/SlyerSkeleton";
 import { AppDispatch } from "../../store";
-import "./style.css";
 import { cardInfo } from "./constants";
+import "./style.css";
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState<IMovie[]>();

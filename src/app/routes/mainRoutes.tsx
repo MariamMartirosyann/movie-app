@@ -1,5 +1,4 @@
 import MainLayout from "../layout/mainLayout";
-import ComingSoon from "../pages/ComingSoon";
 import Home from "../pages/Home";
 import MovieList from "../pages/MovieList";
 import Movie from "../shared/components/MovieItem";
@@ -13,7 +12,6 @@ const mainRoutes = [
       { path: ERoutes.HOME, element: <Home /> },
       { path: ERoutes.MOVIE_LIST, element: <MovieList /> },
       { path: ERoutes.MOVIE_DETAILS, element: <Movie /> },
-      { path: ERoutes.COMING_SOON, element: <ComingSoon /> },
     ],
   },
 ];

@@ -1,16 +1,8 @@
-import { ERoutes } from "../../../routes/constants"
+import { ERoutes } from "../../../routes/constants";
 
-
-export const useNavbarRoutes =() =>{
-    return[
-        {text:"Home",
-        path:ERoutes.HOME
-        },
-        {text:"Movie List",
-        path:ERoutes.MOVIE_LIST
-        },
-        {text:"Coming Soon",
-        path:ERoutes.COMING_SOON
-        },
-    ]
-}
+export const useNavbarRoutes = () => {
+  return [
+    { text: "Home", path: ERoutes.HOME },
+    { text: "Movie List", path: ERoutes.MOVIE_LIST },
+  ];
+};
